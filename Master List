@@ -1,1 +1,23 @@
-https://docs.google.com/document/d/1fwzuZWTgbmj-GmwAzneeXeW-lpd29lJUNcs1gZmulzA/edit?usp=sharing
+Language and axis labels in the visualizations must be accessible to a broad audience. Make sure that everything is simple and to the point. 
+Your grandma should be able to understand it.
+
+Titles cannot be over two lines (no more than 75 characters)
+
+Tables need to be in separate page, portrait landscape orientation. Cannot be sideways
+  - Need a short, one-line title in bold text
+  - Symbols are defined below the table with additional descriptive material
+    - All have to be double-spaced
+    
+Legends should begin with a brief title for the whole figure and continue with a short description of each panel and the symbols used
+  - Should not contain any details about research methods
+  - Need to be fewer than 300 words each
+  
+Figures should be simple and easy to understand
+  - Cannot have more than one panel unless the visualizations are logically connected to each other
+  - Standard sizes: 90 mm (single column) and 180 mm (double column) 
+  - First letter needs to be capitalized then everything else needs to be undercase
+  - Units should have a single space between number and unit
+    - Thousands should be separated by commas
+  - Text explaining or clarifying symbols should be included in the legend and not the axis
+  - Should be incorporated with the text in a word or PDF
+
