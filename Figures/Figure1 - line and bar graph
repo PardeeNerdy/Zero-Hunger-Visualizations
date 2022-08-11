@@ -1,3 +1,4 @@
+
 #ZeroHunger Visualizations
 #Fig 1 - Line graph and bar graph
 import pandas as pd
@@ -8,12 +9,11 @@ import matplotlib.patches as mpatches
 import numpy as np
 import datetime as dt
 
-
 #importing DF
 Figure1= pd.ExcelFile("EEB52C10.xlsx")
 figure1df=pd.read_excel("EEB52C10.xlsx", sheet_name ="Figure1")
 
-#Trying to plot with Lists
+#Plot with Lists
 figure1df.drop(figure1df.columns[0], axis = 1, inplace=True) 
 BAU= figure1df.iloc[5].values.tolist()
 PMF =figure1df.iloc[6].values.tolist()
@@ -26,9 +26,8 @@ years = []
 for i in range(2017, 2040+1):
     years.append(i)
 
-
-
-fig, ax = plt.subplots()
+#plot line graph
+ax1 = plt.subplots()
 plt.title('Prevelance of Undernourishment - World \n', loc = 'center', fontsize=18)
 plt.plot(years, BAU, label = "BAU", color ="#0868ac" )
 plt.plot(years, PMF, label = "PMF", color="#43a2ca")
@@ -36,26 +35,27 @@ plt.plot(years, RCC, label = "RCC", color="#7bccc4")
 plt.plot(years, EDF, label = "EDF", color = "#a8ddb5")
 plt.plot(years, Target, linestyle = "dashed", label = "Target", color = "#ccebc5")
 plt.legend()
-#plt.xlim([2017, 2041])
-ax.set_yticks(np.arange(0,11), labelsize=10)
-ax.set_xticks(np.arange(2017,2041), labelsize=10) #labelsize and font size don't seem to work. How to make smaller?
-ax.set_ylabel ('% of Population')
-plt.setp(ax.get_xticklabels(), rotation=45, horizontalalignment='right')
+plt.xticks(np.arange(2017, 2041, step=1))
+plt.yticks(np.arange(0,11, step =1))
+plt.tick_params(labelrotation= 45, labelsize = 'small') 
+plt.ylabel ('% of Population')
 
-
-#Bargraph -  no line cutting across scenarios yet, bars still inverted
-
+#bar chart values
 Scenarios= ['BAU', 'PMF 50', "PMF 80", "PMF 100", "RCC 50", "RCC 80", "RCC 100", "EDF 50", "EDF 80", "EDF 100"]
 Values = ["3.50", "3.05", "2.75", "2.30", "2.65", "2.19","1.71", "2.92", "2.62","2.06"]
 colors = ["#0868ac","#43a2ca", "#43a2ca", "#43a2ca", "#7bccc4", "#7bccc4", "#7bccc4","#a8ddb5", "#a8ddb5", "#a8ddb5"]
+#df = pd.DataFrame([Scenarios, Values])
 
-
-#using lists to graph bars
-fig, ax1 = plt.subplots()
-ax1.bar(Scenarios, Values, color =colors)
+#bar chart graphing
+ax2 = plt.subplots()
+plt.bar(Scenarios, Values, color = colors)
+#don't yet have values for scenario averages
 plt.title('Percent of Population Undernourished, by scenario and target percentile', loc = 'center', fontsize=18)
-ax1.set_ylim(0,4) #parameters don't seem to effect inverted bars
-ax1.set_ylabel ('% of the Population')
-ax1.set_xlabel ('Are we naming this axis?')
-plt.setp(ax1.get_xticklabels(), rotation=45, horizontalalignment='right')
-plt.show()
+plt.ylim(0,4)
+plt.ylabel ('% of the Population')
+plt.yticks(np.arange(0,4, step =.5))
+plt.xlabel ('Scenrarios')
+plt.tick_params(labelrotation= 45, labelsize = 'small')
+
+#don't yet have symbols
+#how to save as one fig?
