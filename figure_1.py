@@ -19,7 +19,7 @@ iterations = 0
 for year in target_years:
     target_years[iterations] = year.replace(".0", "")
     iterations += 1
-data['Percentile Target']=data['Percentile Target'].replace({50.0:'Average', 80.0:'Above\nAverage   ', 100.0:'Top\nPerformer'}) #added spaces after "above average" so that it doesn't overlap with "Top Performer" label on x axis
+data['Percentile Target']=data['Percentile Target'].replace({50.0:'Average', 80.0:'Above\nAverage', 100.0:'Top\nPerformer'}) 
 target_percentiles = data['Percentile Target'].dropna().unique().astype(str)
 iterations = 0
 #Critical line of code needed to update the excel data. This will make the "50" "80" "100" become the new names we want "Average" "above..."
@@ -33,7 +33,7 @@ scenarios = scenarios[4:8]
 colors = ["#8c96c6","#8856a7","#810f7c"] 
 
 #This section makes the bars. We will edit here to be "(1,5, figsize.... '={width_rations:[6,1,3,3,3]})"
-fig, axs = plt.subplots(1,5, figsize=(10,5), constrained_layout=True, gridspec_kw={'width_ratios': [6,1,3,3,3]}) 
+fig, axs = plt.subplots(1,5, figsize=(15,5), constrained_layout=True, gridspec_kw={'width_ratios': [6,1,3,3,3]}) 
 
 #BAU needs special treatment (we now want axs[1] to be BaU, so it comes after the line graph)
 scenario_data = data[data['Scenario'] == 'BaU'] #Filter to only the BaU data
@@ -54,7 +54,7 @@ for scenario in scenarios:
         values = values[1:] #Drop an NA
         axs[iterations+2].bar(target_percentiles, values,color= colors[iterations]) #Bar chart will be three bars. These are the average for the value in 2040 for the given scenario + percentile target combination.
         percentile_iterations = 0
-        axs[iterations+2].tick_params(labelsize = 'small') #Labels are overlapping with regular sized font. Can use labelrotation = 45 if these are still overlapping.
+        axs[iterations+2].tick_params(labelsize = 'medium') #Can use small font or labelrotation = 45 if these are still overlapping.
         #We now need to go to each percentile target, and plot its three year target values
         for percentile in target_percentiles:
             percentile_values = scenario_data[scenario_data["Percentile Target"] == percentile]
@@ -73,7 +73,7 @@ for scenario in scenarios:
         axs[iterations+2].get_yaxis().set_visible(False)
         iterations += 1
 
-axs[3].legend(target_years,title="Target Year")
+legendfig1 = axs[3].legend(target_years,title="Target Year")
 #plt.savefig(figure_directory + "figure 1 Bars.svg", format="svg")
 #plt.clf()
 
@@ -90,7 +90,7 @@ for scenario in scenarios:
     scenario_data = data[data['Scenario'] == scenario]
     axs[0].plot(scenario_data['Year'], scenario_data['Value'], color=colors[iterations], linewidth = 4) #will need to change plt -> axs[0]
     iterations += 1
-axs[0].legend(scenarios, title="Scenario") #will need to change plt -> axs[0]
+legendfig = axs[0].legend(scenarios, title="Scenario") #will need to change plt -> axs[0]
 axs[0].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
 axs[0].set_xlabel("Year")
 axs[0].set_ylabel("Percent of Global Population Malnourished")
