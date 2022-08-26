@@ -33,7 +33,7 @@ scenarios = scenarios[4:8]
 colors = ["#8c96c6","#8856a7","#810f7c"] 
 
 #This section makes the bars. We will edit here to be "(1,5, figsize.... '={width_rations:[6,1,3,3,3]})"
-fig, axs = plt.subplots(1,5, figsize=(15,5), constrained_layout=True, gridspec_kw={'width_ratios': [6,1,3,3,3]}) 
+fig, axs = plt.subplots(1,5, figsize=(15,7), constrained_layout=True, gridspec_kw={'width_ratios': [6,1,3,3,3]}) 
 
 #BAU needs special treatment (we now want axs[1] to be BaU, so it comes after the line graph)
 scenario_data = data[data['Scenario'] == 'BaU'] #Filter to only the BaU data
@@ -95,4 +95,4 @@ axs[0].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
 axs[0].set_xlabel("Year")
 axs[0].set_ylabel("Percent of Global Population Malnourished")
 axs[0].set_title("Percent of Global Population \nUndernourised by Scenario Over Time")
-plt.savefig(figure_directory + "figure 1 Line + Bar.svg", format="svg") #This will become the only save fig with the changes mentioned in the TODO section
+plt.savefig(figure_directory + "figure 1 Line + Bar.svg", format="svg", bbox_inches="tight") #This will become the only save fig with the changes mentioned in the TODO section
