@@ -73,7 +73,6 @@ for scenario in scenarios:
         axs[iterations+2].get_yaxis().set_visible(False)
         iterations += 1
 
-legendfig1 = axs[3].legend(target_years,title="Target Year")
 #plt.savefig(figure_directory + "figure 1 Bars.svg", format="svg")
 #plt.clf()
 
@@ -90,7 +89,6 @@ for scenario in scenarios:
     scenario_data = data[data['Scenario'] == scenario]
     axs[0].plot(scenario_data['Year'], scenario_data['Value'], color=colors[iterations], linewidth = 4) #will need to change plt -> axs[0]
     iterations += 1
-legendfig = axs[0].legend(scenarios, title="Scenario") #will need to change plt -> axs[0]
 axs[0].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
 axs[0].set_xlabel("Year")
 axs[0].set_ylabel("Percent of Global Population Malnourished")
