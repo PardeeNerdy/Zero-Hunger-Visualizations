@@ -1,0 +1,61 @@
+
+#ZeroHunger Visualizations
+#Fig 1 - Line graph and bar graph
+import pandas as pd
+from pandas import DataFrame
+import matplotlib.pyplot as plt
+from matplotlib import cm
+import matplotlib.patches as mpatches
+import numpy as np
+import datetime as dt
+
+#importing DF
+Figure1= pd.ExcelFile("EEB52C10.xlsx")
+figure1df=pd.read_excel("EEB52C10.xlsx", sheet_name ="Figure1")
+
+#Plot with Lists
+figure1df.drop(figure1df.columns[0], axis = 1, inplace=True) 
+BAU= figure1df.iloc[5].values.tolist()
+PMF =figure1df.iloc[6].values.tolist()
+RCC =figure1df.iloc[7].values.tolist()
+EDF =figure1df.iloc[8].values.tolist()
+Target = []
+for i in range(0,24):
+    Target.append(3)
+years = []
+for i in range(2017, 2040+1):
+    years.append(i)
+
+#plot line graph
+ax1 = plt.subplots()
+plt.title('Prevelance of Undernourishment - World \n', loc = 'center', fontsize=18)
+plt.plot(years, BAU, label = "BAU", color ="#0868ac" )
+plt.plot(years, PMF, label = "PMF", color="#43a2ca")
+plt.plot(years, RCC, label = "RCC", color="#7bccc4")
+plt.plot(years, EDF, label = "EDF", color = "#a8ddb5")
+plt.plot(years, Target, linestyle = "dashed", label = "Target", color = "#ccebc5")
+plt.legend()
+plt.xticks(np.arange(2017, 2041, step=1))
+plt.yticks(np.arange(0,11, step =1))
+plt.tick_params(labelrotation= 45, labelsize = 'small') 
+plt.ylabel ('% of Population')
+
+#bar chart values
+Scenarios= ['BAU', 'PMF 50', "PMF 80", "PMF 100", "RCC 50", "RCC 80", "RCC 100", "EDF 50", "EDF 80", "EDF 100"]
+Values = ["3.50", "3.05", "2.75", "2.30", "2.65", "2.19","1.71", "2.92", "2.62","2.06"]
+colors = ["#0868ac","#43a2ca", "#43a2ca", "#43a2ca", "#7bccc4", "#7bccc4", "#7bccc4","#a8ddb5", "#a8ddb5", "#a8ddb5"]
+#df = pd.DataFrame([Scenarios, Values])
+
+#bar chart graphing
+ax2 = plt.subplots()
+plt.bar(Scenarios, Values, color = colors)
+#don't yet have values for scenario averages
+plt.title('Percent of Population Undernourished, by scenario and target percentile', loc = 'center', fontsize=18)
+plt.ylim(0,4)
+plt.ylabel ('% of the Population')
+plt.yticks(np.arange(0,4, step =.5))
+plt.xlabel ('Scenrarios')
+plt.tick_params(labelrotation= 45, labelsize = 'small')
+
+#don't yet have symbols
+#how to save as one fig?
