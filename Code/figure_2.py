@@ -76,6 +76,6 @@ for Region in Regions:
         scenario_iterations += 1
     subfig.suptitle(Region)
     region_iterations += 1
-fig.suptitle("Percentage Point Reduction in Population Undernourishment, compared to BaU in 2040, by Scenario and Percentile Target")
+fig.suptitle("Percentage Point Reduction in Population Undernourishment, compared to BaU in 2040, by Scenario and Percentile Target", x = 0.5, y = 1.03)
 fig.supylabel("Percentage Point Reduction in Undernourishment")
 plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
