@@ -33,19 +33,25 @@ scenarios = scenarios[1:]
 #Use these colors, in this this order, for all figures representing the scenarios (BaU is #bdbdbd, specifically)
 colors = ["#8c96c6","#8856a7","#810f7c"] 
 
-Regions = data['Region'].dropna().unique().astype(str)
+Regions = sorted(data['Region'].dropna().unique().astype(str))
 #This section makes the bars. 
 fig = plt.figure(figsize=(22, 14))
-subfigs = fig.subfigures(3, 3)
-plt.subplots_adjust(wspace=0, hspace=.4, left=.1)
+subfigs = fig.subfigures(4, 3,wspace=0)
+subfig = subfigs[2,0]
+plt.subplots_adjust(wspace=0, hspace=.2)
+
 region_iterations = 0
 for Region in Regions:
     subfig = subfigs[math.trunc(region_iterations /3)][region_iterations % 3]
     inner = subfig.subplots(1,3)
     inner[0].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=1))
+    
+    inner[0].set_xlabel(scenarios[0])
     inner[1].get_yaxis().set_visible(False)
+    inner[1].set_xlabel(scenarios[1])
     inner[2].get_yaxis().set_visible(False)
-    region_data = data[data['Region'] == Region]
+    inner[2].set_xlabel(scenarios[2])
+    region_data = data[data['Region'] == Region].dropna()
     region_min = min(region_data['Difference from BAU 2040'].unique())
     scenario_iterations = 0
     for scenario in scenarios:
@@ -55,7 +61,7 @@ for Region in Regions:
         ax.set_ylim(region_min - .1, 0)
         ax.axhline(y=(sum(values)/len(values)), color="black", linestyle="--")
         ax.bar(target_percentiles, values,color= colors[scenario_iterations]) #Bar chart will be three bars. These are the average for the value in 2040 for the given scenario + percentile target combination.
-        ax.tick_params(labelsize = 'small') #Can use small font or labelrotation = 45 if these are still overlapping.
+        ax.tick_params(labelsize = 'small')
         #We now need to go to each percentile target, and plot its three year target values
         percentile_iterations = 0
         for percentile in target_percentiles:
@@ -70,5 +76,6 @@ for Region in Regions:
         scenario_iterations += 1
     subfig.suptitle(Region)
     region_iterations += 1
-fig.suptitle("Percent Reduction of Population Undernourised in 2040 by Region, Scenario, and Percentile Target", fontsize="xx-large")
+fig.suptitle("Percentage Point Reduction in Population Undernourishment, compared to BaU in 2040, by Scenario and Percentile Target")
+fig.supylabel("Percentage Point Reduction in Undernourishment")
 plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
