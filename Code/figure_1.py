@@ -43,7 +43,11 @@ axs[1].set_xlabel(scenarios[0])
 axs[1].set_ylabel("Prevalence of Undernourishment in 2040") #This is the only bar chart that gets a y-axis. It will be uniform for the following three bar charts.
 axs[1].set_ylim(top=8) #Change this if the bars have way too much whitespace above, or don't fit. New data may cause that.
 axs[1].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=1))
+
 axs[3].set_title("Prevalence of Undernourishment in 2040 by Scenario and Percentile Target") #This title could go further left, or right, depending on what lets it fit + not be over the line graph
+
+axs[3].set_title("Prevalence of Undernourishment in 2040 \nby Scenario and Percentile Target") #This title could go further left, or right, depending on what lets it fit + not be over the line graph
+
 
 #We need to track how many scenarios we have gone thorugh
 iterations = 0
@@ -92,6 +96,8 @@ axs[0].yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
 axs[0].set_xlabel("Year")
 axs[0].set_ylabel("% of Population")
 axs[0].set_title("Prevalence of Global Undernourishment")
+axs[0].set_ylabel("Prevalence of Undernourishment")
+axs[0].set_title("Prevalence of Undernourishment by Scenario Over Time")
 axs[0].set_ylim(0,8)
 handles, labels = axs[0].get_legend_handles_labels()
 handles2,labels2 = axs[4].get_legend_handles_labels()
@@ -102,3 +108,7 @@ labels.append(labels2[9])
 axs[4].legend(handles, labels,bbox_to_anchor=(1, 1))
 fig.align_xlabels()
 plt.savefig(figure_directory + "figure 1 Line + Bar.svg", format="svg", bbox_inches="tight") #This will become the only save fig with the changes mentioned in the TODO section
+axs[4].legend(handles, labels,bbox_to_anchor=(1.05, 1))
+fig.align_xlabels()
+plt.savefig(figure_directory + "figure 1 Line + Bar.svg", format="svg", bbox_inches="tight") #This will become the only save fig with the changes mentioned in the TODO section
+
