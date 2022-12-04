@@ -1,5 +1,3 @@
-#figure 2
-
 from tkinter.tix import INTEGER
 from tokenize import Double
 import pandas as pd
@@ -29,7 +27,7 @@ data['Target Percentile']=data['Target Percentile'].replace({50.0:'Average', 80.
 data['Scenario']=data['Scenario'].replace({'Business as Usual':'Business\nas Usual', 
                                             "Producing More Food":'Producing\nMore Food', 
                                             "Equal Food Distribution":'Equal\nFood Distribution', 
-                                            "Raising average Caloric Consumption":"Raising average\nCaloric Consumption"}) 
+                                            "Raising Caloric Consumption":"Raising average\nCaloric Consumption"}) 
 target_percentiles = data['Target Percentile'].dropna().unique().astype(str) #still has "None" values- how to get rid of?
 target_percentiles = target_percentiles[1:]
 iterations = 0
@@ -134,11 +132,12 @@ for Region in Regions:
 fig.suptitle("Percentage Point Reduction in Population Undernourishment, compared to BaU in 2040, by Scenario and Percentile Target", x = 0.5, y = 1.03)
 fig.supylabel("Percentage Point Reduction in Undernourishment")
 plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
-
 if primary_regions_only:
-    subfigs[1][2].legend(handles, labels, loc = "center")
-    plt.savefig(figure_directory + "\\figure 2 Bars_main_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    subfigs[1][2].legend(handles, labels, loc = "center",prop={'size': 6})
+    #plt.savefig(figure_directory + "\\figure 2 Bars_main_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    plt.show()
 else:
-    subfigs[3][1].legend(handles, labels, loc = "center")
-    plt.savefig(figure_directory + "\\figure 2 Bars_all_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    subfigs[3][1].legend(handles, labels, loc = "center",prop={'size': 6})
+    #plt.savefig(figure_directory + "\\figure 2 Bars_all_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    plt.show()
 
