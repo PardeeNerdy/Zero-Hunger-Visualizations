@@ -7,8 +7,8 @@ import matplotlib.ticker as mtick
 
 
 #This shouldn't need to change. If it's not working, double check the file is in the root folder of the repo.
-#figure_directory = "./Figures/"
-data_directory = "Figure 1 Data.xlsx"
+figure_directory = "Figures"
+data_directory = ".\Cleaned Data\Figure 1 Data.xlsx"
 data = pd.read_excel(data_directory, sheet_name="Data in Years")
 
 #This will be used to make our "Year Target" plots. Will become Circle, Square, and Upfacing Triangle respectively.
