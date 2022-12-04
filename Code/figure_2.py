@@ -134,10 +134,10 @@ fig.supylabel("Percentage Point Reduction in Undernourishment")
 plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
 if primary_regions_only:
     subfigs[1][2].legend(handles, labels, loc = "center",prop={'size': 6})
-    #plt.savefig(figure_directory + "\\figure 2 Bars_main_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
-    plt.show()
+    plt.savefig(figure_directory + "\\figure 2 Bars_main_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    #plt.show()
 else:
     subfigs[3][1].legend(handles, labels, loc = "center",prop={'size': 6})
-    #plt.savefig(figure_directory + "\\figure 2 Bars_all_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
-    plt.show()
+    plt.savefig(figure_directory + "\\figure 2 Bars_all_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
+    #plt.show()
 
