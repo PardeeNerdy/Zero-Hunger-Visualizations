@@ -131,7 +131,7 @@ for Region in Regions:
     region_iterations += 1
 fig.suptitle("Percentage Point Reduction in Population Undernourishment, compared to BaU in 2040, by Scenario and Percentile Target", x = 0.5, y = 1.03)
 fig.supylabel("Percentage Point Reduction in Undernourishment")
-plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
+#plt.savefig(figure_directory + "\\figure 2 Bars.svg", format="svg")
 if primary_regions_only:
     subfigs[1][2].legend(handles, labels, loc = "center",prop={'size': 50})
     plt.savefig(figure_directory + "\\figure 2 Bars_main_regions.svg", format="svg", bbox_inches = 'tight',pad_inches=1)
