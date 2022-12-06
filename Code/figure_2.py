@@ -7,7 +7,7 @@ import matplotlib.gridspec as gridspec
 import math
 
 #### CHANGE TO TRUE IF YOU ONLY WANT FIRST FIVE REGIONS ####
-primary_regions_only = False
+primary_regions_only = True
 #### IF FALSE, IT WILL CREATE A FIGURE WITH ALL REGIONS ####
 
 #This shouldn't need to change. If it's not working, double check the file is in the root folder of the repo.
