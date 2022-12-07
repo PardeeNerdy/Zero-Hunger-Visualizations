@@ -1,3 +1,5 @@
+#figure 2
+
 from tkinter.tix import INTEGER
 from tokenize import Double
 import pandas as pd
@@ -27,7 +29,7 @@ data['Target Percentile']=data['Target Percentile'].replace({50.0:'Average', 80.
 data['Scenario']=data['Scenario'].replace({'Business as Usual':'Business\nas Usual', 
                                             "Producing More Food":'Producing\nMore Food', 
                                             "Equal Food Distribution":'Equal\nFood Distribution', 
-                                            "Raising Caloric Consumption":"Raising average\nCaloric Consumption"}) 
+                                            "Raising average Caloric Consumption":"Raising \nCaloric Consumption"}) 
 target_percentiles = data['Target Percentile'].dropna().unique().astype(str) #still has "None" values- how to get rid of?
 target_percentiles = target_percentiles[1:]
 iterations = 0
