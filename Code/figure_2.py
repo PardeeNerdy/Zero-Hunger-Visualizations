@@ -12,7 +12,7 @@ primary_regions_only = False
 
 #This shouldn't need to change. If it's not working, double check the file is in the root folder of the repo.
 figure_directory = "Figures"
-data_directory = ".\Cleaned Data\Figure 2 Data Simplified and Cleaned.xlsx"
+data_directory = ".\Cleaned Data\Figure 2 Data Simplified and Cleaned Dec 2022.xlsx"
 data = pd.read_excel(data_directory)
 
 #This will be used to make our "Year Target" plots. Will become Circle, Square, and Upfacing Triangle respectively.
